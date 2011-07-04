@@ -2,6 +2,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!-- http://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html -->
+
   <groupId>net.paissad</groupId>
   <artifactId>jcamstream</artifactId>
   <version>0.0.1-SNAPSHOT</version>
@@ -9,14 +11,13 @@
 
   <name>JCamStream</name>
   <description>A simple application for video surveillance from webcams.</description>
-  <url>http://dev.paissad.net</url>
+  <url>https://github.com/paissad/jcamstream</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <organization>
-    <url>http://dev.paissad.net</url>
   </organization>
 
   <licenses>
@@ -33,6 +34,7 @@
       <id>paissad</id>
       <name>Papa Issa DIAKHATE</name>
       <email>paissad@gmail.com</email>
+      <url>http://blog.paissad.org</url>
       <roles>
         <role>Project Leader</role>
         <role>Developer</role>
@@ -41,8 +43,9 @@
   </developers>
   
   <scm>
-    <connection></connection>
-    <url></url>
+    <connection>git://github.com/paissad/jcamstream.git</connection>
+    <developerConnection>paissad</developerConnection>
+    <url>https://github.com/paissad/jcamstream</url>
   </scm>
 
   <build>
@@ -61,7 +64,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>2.3.1</version>
         <configuration>
@@ -74,10 +76,10 @@
         </configuration>
       </plugin>
 
-      <!-- Create the jar with dependencies -->
+      <!-- Create a jar with dependencies -->
       <plugin>
         <!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins 
-          ...which is assumed by default. -->
+          ... which is assumed by default. -->
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.2.1</version>
         <configuration>
