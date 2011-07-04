@@ -6,7 +6,7 @@
 
   <groupId>net.paissad</groupId>
   <artifactId>jcamstream</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>JCamStream</name>
@@ -77,12 +77,20 @@
       </plugin>
 
       <!-- Create a jar with dependencies -->
+      <!-- http://maven.apache.org/plugins/maven-assembly-plugin/descriptor-refs.html#jar-with-dependencies -->
       <plugin>
         <!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins 
           ... which is assumed by default. -->
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.2.1</version>
         <configuration>
+        <descriptorRefs>
+            <!-- http://maven.apache.org/plugins/maven-assembly-plugin/descriptor-refs.html -->
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+            <descriptorRef>bin</descriptorRef>
+            <descriptorRef>src</descriptorRef>
+            <descriptorRef>project</descriptorRef>
+        </descriptorRefs>
           <archive>
             <manifest>
               <mainClass>net.paissad.jcamstream.JCS</mainClass>
