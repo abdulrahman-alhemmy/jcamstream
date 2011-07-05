@@ -17,10 +17,14 @@
  */
 package net.paissad.jcamstream;
 
+import static net.paissad.jcamstream.JCSConstants.JAVA_VENDOR;
+import static net.paissad.jcamstream.JCSConstants.JAVA_VERSION;
 import static net.paissad.jcamstream.JCSConstants.JCS_NAME;
 import static net.paissad.jcamstream.JCSConstants.JCS_VERSION;
+import static net.paissad.jcamstream.JCSConstants.JVM_NAME;
 import static net.paissad.jcamstream.JCSConstants.OS_ARCH;
 import static net.paissad.jcamstream.JCSConstants.OS_NAME;
+import static net.paissad.jcamstream.JCSConstants.OS_VERSION;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -137,15 +141,20 @@ public class JCSOptions {
     public void printVersionToStdout() {
         StringBuilder sb = new StringBuilder();
         sb
-                .append(JCS_NAME).append(" (")
-                .append(JCS_VERSION).append(") [")
+                .append(JCS_NAME).append(" ")
+                .append(JCS_VERSION).append(" [")
                 .append(OS_NAME).append(" - ")
-                // .append(OS_VERSION).append(" - ")
+                .append(OS_VERSION).append(" - ")
                 .append(OS_ARCH).append("]");
+        sb
+                .append(" / (")
+                .append(JVM_NAME)
+                .append(JAVA_VENDOR)
+                .append(JAVA_VERSION)
+                .append(")");
 
         System.out.println(sb.toString());
     }
-
     // _________________________________________________________________________
 
 }

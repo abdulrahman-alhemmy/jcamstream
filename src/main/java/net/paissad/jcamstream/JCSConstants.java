@@ -45,6 +45,17 @@ public interface JCSConstants {
     // System specifics settings ...
     String OS_NAME                  = System.getProperty("os.name");
     String OS_ARCH                  = System.getProperty("os.arch");
-    String OS_VERSION               = System.getProperty("os.name");
+    String OS_VERSION               = System.getProperty("os.version");
 
+    // JVM specifics settings ...
+    String JVM_NAME                 = System.getProperty("java.vm.name");
+    String JAVA_VERSION             = System.getProperty("java.version");
+    String JAVA_VENDOR              = System.getProperty("java.vendor");
+
+    String FILE_SEP                 = System.getProperty("file.separator");
+    String PATH_SEP                 = System.getProperty("path.separator");
+    String LINE_SEP                 = System.getProperty("line.separator");
+
+    int    EXIT_SUCCESS             = 0;
+    int    EXIT_ERROR               = 1;
 }

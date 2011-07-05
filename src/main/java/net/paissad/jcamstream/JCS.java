@@ -17,6 +17,8 @@
  */
 package net.paissad.jcamstream;
 
+import static net.paissad.jcamstream.JCSConstants.EXIT_ERROR;
+import static net.paissad.jcamstream.JCSConstants.EXIT_SUCCESS;
 import static net.paissad.jcamstream.JCSConstants.JCS_NAME;
 import static net.paissad.jcamstream.JCSConstants.JCS_VERSION;
 
@@ -38,12 +40,9 @@ import net.paissad.jcamstream.logging.LogReloader;
  */
 public class JCS {
 
-    private static final int    EXIT_SUCCESS = 0;
-    private static final int    EXIT_ERROR   = 1;
-
-    private static File         logfile      = null;
-    private static File         configFile   = null;
-    private static List<String> arguments    = null;
+    private static File         logfile    = null;
+    private static File         configFile = null;
+    private static List<String> arguments  = null;
 
     private static Logger       logger;
 
@@ -87,15 +86,8 @@ public class JCS {
         try {
             cmdParser.parseArgument(args);
 
-            if (options.isHelp()) {
-                options.printHelpToStdout();
-                System.exit(EXIT_SUCCESS);
-            }
-
-            if (options.isVersion()) {
-                options.printVersionToStdout();
-                System.exit(EXIT_SUCCESS);
-            }
+            printHelpIfSpecifiedAndExit(options);
+            printVersionIfSpecifiedAndExit(options);
 
             File logfileFromCmdLine = options.getLogfile();
             if (logfileFromCmdLine != null) {
@@ -115,9 +107,35 @@ public class JCS {
             }
 
         } catch (CmdLineException cle) {
+            /*
+             * If the '-v' or '-h' options are specified, a CmlLineException
+             * should not be thrown for the only purpose that a required option
+             * such as '-c' is not specified.
+             */
+            printHelpIfSpecifiedAndExit(options);
+            printVersionIfSpecifiedAndExit(options);
+            /*
+             * At this step, no '-h' or '-v' options was specified while the
+             * CmdLineException was thrown ... so we must print the error
+             * message to STDERR and the help to STDOUT !
+             */
             System.err.println(cle.getMessage());
             options.printHelpToStdout();
             System.exit(EXIT_ERROR);
+        }
+    }
+
+    private static void printHelpIfSpecifiedAndExit(JCSOptions options) {
+        if (options.isHelp()) {
+            options.printHelpToStdout();
+            System.exit(EXIT_SUCCESS);
+        }
+    }
+
+    private static void printVersionIfSpecifiedAndExit(JCSOptions options) {
+        if (options.isVersion()) {
+            options.printVersionToStdout();
+            System.exit(EXIT_SUCCESS);
         }
     }
 
