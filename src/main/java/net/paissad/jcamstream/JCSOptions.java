@@ -148,8 +148,8 @@ public class JCSOptions {
                 .append(OS_ARCH).append("]");
         sb
                 .append(" / (")
-                .append(JVM_NAME)
-                .append(JAVA_VENDOR)
+                .append(JVM_NAME).append("  ")
+                .append(JAVA_VENDOR).append("  ")
                 .append(JAVA_VERSION)
                 .append(")");
 
