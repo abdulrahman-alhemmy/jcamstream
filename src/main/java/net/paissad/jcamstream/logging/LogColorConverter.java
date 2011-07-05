@@ -44,6 +44,12 @@ public class LogColorConverter extends ClassicConverter {
     private static final String WARN_COLOR  = YELLOW_COLOR;
 
     /*
+     * Do not use color, except it's specified from the command line with the
+     * '--color' option.
+     */
+    private static boolean      useColor    = false;
+
+    /*
      * (non-Javadoc)
      * 
      * @see ch.qos.logback.core.pattern.Converter#convert(java.lang.Object)
@@ -51,9 +57,12 @@ public class LogColorConverter extends ClassicConverter {
     @Override
     public String convert(ILoggingEvent event) {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.getColor(event.getLevel()));
+        sb.append(this.getColor(event.getLevel(), isUseColor()));
         sb.append(event.getLevel());
-        sb.append(END_COLOR);
+        if (isUseColor())
+            sb.append(END_COLOR);
+        else
+            sb.append("");
         return sb.toString();
     }
 
@@ -61,20 +70,39 @@ public class LogColorConverter extends ClassicConverter {
      * Returns the appropriate characters to change the color for the specified
      * logging level.
      */
-    private String getColor(Level level) {
-        switch (level.toInt()) {
+    private String getColor(Level level, boolean enableColor) {
+        if (enableColor) {
+            switch (level.toInt()) {
 
-            case Level.ERROR_INT:
-                return ERROR_COLOR;
+                case Level.ERROR_INT:
+                    return ERROR_COLOR;
 
-            case Level.WARN_INT:
-                return WARN_COLOR;
+                case Level.WARN_INT:
+                    return WARN_COLOR;
 
-            case Level.TRACE_INT:
-                return BOLD;
-
-            default:
-                return "";
+                case Level.TRACE_INT:
+                    return BOLD;
+            }
         }
+        return ""; // Color is not enabled, or the Level should not be colorized
+    }
+
+    /**
+     * <p>
+     * <b>Note</b>: Do not forget to reload the logger after the use of this
+     * function in order to make changes effective.
+     * </p>
+     * 
+     * @param useColor
+     *            - Whether or not to use the color. Set to <code>true</code> in
+     *            order to use color in STDOUT.
+     * @see LogReloader#reload()
+     */
+    public static void setUseColor(boolean useColor) {
+        LogColorConverter.useColor = useColor;
+    }
+
+    private static boolean isUseColor() {
+        return useColor;
     }
 }

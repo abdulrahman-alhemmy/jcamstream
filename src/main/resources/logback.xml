@@ -20,7 +20,7 @@
   <property name="file_appender" value="FILE" />
   <property name="file_rolling_appender" value="FILE_ROTATE" />
 
-  <conversionRule conversionWord="colorSTDOUT" converterClass="net.paissad.jcamstream.logging.LogColorConverter" />
+  <conversionRule conversionWord="colorLevel" converterClass="net.paissad.jcamstream.logging.LogColorConverter" />
 
   <!-- END OF DEFINES, PROPERTIES, RULES SETTINGS ! =========================================== -->
 
@@ -32,17 +32,7 @@
     </filter>
     <encoder>
       class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%date{ISO8601} [%thread] %-5level %logger{36} - %m %ex{full}%n</Pattern>
-    </encoder>
-  </appender>
-
-  <appender name="${stdout_colored_appender}" class="ch.qos.logback.core.ConsoleAppender">
-    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>TRACE</level>
-    </filter>
-    <encoder>
-      class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%date{ISO8601} [%thread] %colorSTDOUT %-5level %logger{36} - %m %ex{full}%n</Pattern>
+      <Pattern>%date{ISO8601} [%thread] %-5colorLevel %logger{36}.%M  \(%-4L\) - %m %ex{full}%n</Pattern>
     </encoder>
   </appender>
 
@@ -53,7 +43,7 @@
     <file>${completeLogPath}</file>
     <append>false</append>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <pattern>%date{ISO8601} [%thread] %-5level %logger{36} - %m %ex{full}%n</pattern>
+      <pattern>%date{ISO8601} [%thread] %-5level %logger{36}.%M  \(%-4L\) - %m %ex{full}%n</pattern>
     </encoder>
   </appender>
 
@@ -75,7 +65,7 @@
       <maxFileSize>${maxFileSizeBeforeRolling}</maxFileSize>
     </triggeringPolicy>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <pattern>%date{ISO8601} [%thread] %-5level %logger{36} - %m %ex{full}%n</pattern>
+      <pattern>%date{ISO8601} [%thread] %-5level %logger{36}.%M  \(%-4L\) - %m %ex{full}%n</pattern>
     </encoder>
   </appender>
 
@@ -85,7 +75,6 @@
 
   <root level="TRACE">
     <appender-ref ref="${stdout_appender}" />
-    <!-- <appender-ref ref="${stdout_colored_appender}" /> -->
     <!-- <appender-ref ref="${file_appender}" /> -->
     <appender-ref ref="${file_rolling_appender}" />
   </root>

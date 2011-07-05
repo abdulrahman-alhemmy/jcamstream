@@ -72,6 +72,11 @@ public class JCSOptions {
             usage = "options_conf_file")
     private File             configFile;
 
+    @Option(
+            name = "--color",
+            usage = "options_colorize_stdout")
+    private boolean          color;
+
     @Argument
     private List<String>     arguments;
 
@@ -117,6 +122,14 @@ public class JCSOptions {
      */
     public List<String> getArguments() {
         return arguments;
+    }
+
+    /**
+     * @return <code>true</code> if the '--color' option is specified,
+     *         <code>false</code> otherwise.
+     */
+    public boolean isColor() {
+        return color;
     }
 
     // _________________________________________________________________________

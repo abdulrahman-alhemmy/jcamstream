@@ -30,6 +30,7 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.slf4j.Logger;
 
 import net.paissad.jcamstream.factory.JCSLoggerFactory;
+import net.paissad.jcamstream.logging.LogColorConverter;
 import net.paissad.jcamstream.logging.LogDirDefiner;
 import net.paissad.jcamstream.logging.LogFileNameDefiner;
 import net.paissad.jcamstream.logging.LogReloader;
@@ -86,8 +87,14 @@ public class JCS {
         try {
             cmdParser.parseArgument(args);
 
+            // If the '-h, --help' option is specified.
             printHelpIfSpecifiedAndExit(options);
+
+            // If the '-v, --version' options is specified.
             printVersionIfSpecifiedAndExit(options);
+
+            // If '--color' is specified, the STDOUT output will be colorized.
+            LogColorConverter.setUseColor(options.isColor());
 
             File logfileFromCmdLine = options.getLogfile();
             if (logfileFromCmdLine != null) {
