@@ -37,6 +37,7 @@ public interface JCSConstants {
 
     String JCS_DESCRIPTION          = "A simple application for video surveillance written in Java";
     String JCS_AUTHOR               = "Papa Issa DIAKHATE (paissad)";
+    String JCS_COPYRIGHT            = "Copyright (C) 2011 " + JCS_AUTHOR;
 
     // Logger settings ...
     String JCS_DEFAULT_LOG_FILENAME = "jcamstream.log";

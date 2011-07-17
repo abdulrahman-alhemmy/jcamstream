@@ -280,43 +280,43 @@ public class FTPUtils {
         this.ftpClient = ftpClient;
     }
 
-    public final String getFtpUser() {
+    public String getFtpUser() {
         return ftpUser;
     }
 
-    public final void setFtpUser(String ftpUser) {
+    public void setFtpUser(String ftpUser) {
         this.ftpUser = ftpUser;
     }
 
-    public final String getFtpPassword() {
+    public String getFtpPassword() {
         return ftpPassword;
     }
 
-    public final void setFtpPassword(String ftpPassword) {
+    public void setFtpPassword(String ftpPassword) {
         this.ftpPassword = ftpPassword;
     }
 
-    public final String getFtpServerHost() {
+    public String getFtpServerHost() {
         return ftpServerHost;
     }
 
-    public final void setFtpServerHost(String ftpServerHost) {
+    public void setFtpServerHost(String ftpServerHost) {
         this.ftpServerHost = ftpServerHost;
     }
 
-    public final int getFtpServerPort() {
+    public int getFtpServerPort() {
         return ftpServerPort;
     }
 
-    public final void setFtpServerPort(int ftpServerPort) {
+    public void setFtpServerPort(int ftpServerPort) {
         this.ftpServerPort = ftpServerPort;
     }
 
-    public final String getFtpServerDir() {
+    public String getFtpServerDir() {
         return ftpServerDir;
     }
 
-    public final void setFtpServerDir(String ftpServerDir) {
+    public void setFtpServerDir(String ftpServerDir) {
         this.ftpServerDir = ftpServerDir;
     }
 

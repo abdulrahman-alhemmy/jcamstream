@@ -262,107 +262,107 @@ public class MailUtils {
     // _________________________________________________________________________
     // Getters / Setters ...
 
-    public final String getSmtpUser() {
+    public String getSmtpUser() {
         return smtpUser;
     }
 
-    public final void setSmtpUser(String smtpUser) {
+    public void setSmtpUser(String smtpUser) {
         this.smtpUser = smtpUser;
     }
 
-    public final String getSmtpPassword() {
+    public String getSmtpPassword() {
         return smtpPassword;
     }
 
-    public final void setSmtpPassword(String smtpPassword) {
+    public void setSmtpPassword(String smtpPassword) {
         this.smtpPassword = smtpPassword;
     }
 
-    public final String getSmtpHost() {
+    public String getSmtpHost() {
         return smtpHost;
     }
 
-    public final void setSmtpHost(String smtpHost) {
+    public void setSmtpHost(String smtpHost) {
         this.smtpHost = smtpHost;
     }
 
-    public final int getSmtpPort() {
+    public int getSmtpPort() {
         return smtpPort;
     }
 
-    public final void setSmtpPort(int smtpPort) {
+    public void setSmtpPort(int smtpPort) {
         this.smtpPort = smtpPort;
     }
 
-    public final boolean isSmtpAuth() {
+    public boolean isSmtpAuth() {
         return smtpAuth;
     }
 
-    public final void setSmtpAuth(boolean smtpAuth) {
+    public void setSmtpAuth(boolean smtpAuth) {
         this.smtpAuth = smtpAuth;
     }
 
-    public final boolean isStarttls() {
+    public boolean isStarttls() {
         return starttls;
     }
 
-    public final void setStarttls(boolean starttls) {
+    public void setStarttls(boolean starttls) {
         this.starttls = starttls;
     }
 
-    public final boolean isSsl() {
+    public boolean isSsl() {
         return ssl;
     }
 
-    public final void setSsl(boolean ssl) {
+    public void setSsl(boolean ssl) {
         this.ssl = ssl;
     }
 
-    public final Set<String> getRecipientsTO() {
+    public Set<String> getRecipientsTO() {
         return recipientsTO;
     }
 
-    public final void setRecipientsTO(Set<String> recipients) {
+    public void setRecipientsTO(Set<String> recipients) {
         this.recipientsTO = recipients;
     }
 
-    public final Set<String> getRecipientsCC() {
+    public Set<String> getRecipientsCC() {
         return recipientsCC;
     }
 
-    public final void setRecipientsCC(Set<String> recipients) {
+    public void setRecipientsCC(Set<String> recipients) {
         this.recipientsCC = recipients;
     }
 
-    public final Set<String> getRecipientsBCC() {
+    public Set<String> getRecipientsBCC() {
         return recipientsBCC;
     }
 
-    public final void setRecipientsBCC(Set<String> recipients) {
+    public void setRecipientsBCC(Set<String> recipients) {
         this.recipientsBCC = recipients;
     }
 
-    public final List<File> getAttachements() {
+    public List<File> getAttachements() {
         return attachements;
     }
 
-    public final void setAttachements(List<File> attachements) {
+    public void setAttachements(List<File> attachements) {
         this.attachements = attachements;
     }
 
-    public final String getSubject() {
+    public String getSubject() {
         return subject;
     }
 
-    public final void setSubject(String subject) {
+    public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    public final String getContent() {
+    public String getContent() {
         return content;
     }
 
-    public final void setContent(String content) {
+    public void setContent(String content) {
         this.content = content;
     }
 

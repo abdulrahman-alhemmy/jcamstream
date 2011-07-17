@@ -32,7 +32,7 @@
     </filter>
     <encoder>
       class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%date{ISO8601} [%thread] %-5colorLevel %logger{36}.%M  \(%-4L\) - %m %ex{full}%n</Pattern>
+      <Pattern>%date{ISO8601} [%thread] %-5colorLevel %-55(%logger{36}.%M \(%-4L\)) - %m %ex{full}%n</Pattern>
     </encoder>
   </appender>
 
@@ -43,7 +43,7 @@
     <file>${completeLogPath}</file>
     <append>false</append>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <pattern>%date{ISO8601} [%thread] %-5level %logger{36}.%M  \(%-4L\) - %m %ex{full}%n</pattern>
+      <pattern>%date{ISO8601} [%thread] %-5level %-55(%logger{36}.%M \(%-4L\)) - %m %ex{full}%n</pattern>
     </encoder>
   </appender>
 
@@ -65,7 +65,7 @@
       <maxFileSize>${maxFileSizeBeforeRolling}</maxFileSize>
     </triggeringPolicy>
     <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <pattern>%date{ISO8601} [%thread] %-5level %logger{36}.%M  \(%-4L\) - %m %ex{full}%n</pattern>
+      <pattern>%date{ISO8601} [%thread] %-5level %-55(%logger{36}.%M \(%-4L\)) - %m %ex{full}%n</pattern>
     </encoder>
   </appender>
 

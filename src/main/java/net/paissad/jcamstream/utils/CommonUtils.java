@@ -17,11 +17,34 @@
  */
 package net.paissad.jcamstream.utils;
 
+import java.awt.image.BufferedImage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author Papa Issa DIAKHATE (paissad)
  * 
  */
 public class CommonUtils {
+
+    /**
+     * Returns the filename extension without the dot.
+     * 
+     * @param filename
+     * @return The extension without the dot, or <code>null</code> if the
+     *         filename is null, or an empty String if the file has no
+     *         extension.
+     */
+    public static String getFilenameExtension(final String filename) {
+        if (filename == null)
+            return null;
+        Pattern pattern = Pattern.compile("\\.[^\\.]*$");
+        Matcher matcher = pattern.matcher(filename);
+        int count = matcher.groupCount();
+        return (matcher.find()) ? matcher.group(count) : "";
+    }
+
+    // _________________________________________________________________________
 
     /**
      * @param bytes
@@ -30,7 +53,7 @@ public class CommonUtils {
      * @return A String representation of the file size.
      * 
      */
-    public static String humanReadableByteCount(long bytes, boolean si) {
+    public static String humanReadableByteCount(final long bytes, final boolean si) {
         int unit = si ? 1000 : 1024;
 
         if (bytes < unit)
@@ -41,4 +64,32 @@ public class CommonUtils {
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
+    // _________________________________________________________________________
+
+    /**
+     * Convert a {@link BufferedImage} of any type, to {@link BufferedImage} of
+     * a specified type. If the source image is the
+     * same type as the target type, then original image is returned,
+     * otherwise new image of the correct type is created and the content
+     * of the source image is copied into the new image.
+     * 
+     * @param sourceImage
+     *            the image to be converted
+     * @param targetType
+     *            the desired BufferedImage type
+     * 
+     * @return a BufferedImage of the specified target type.
+     * 
+     * @see BufferedImage
+     */
+    public static BufferedImage convertImageToType(BufferedImage sourceImage, int targetType) {
+        BufferedImage image;
+        if (sourceImage.getType() == targetType)
+            image = sourceImage;
+        else {
+            image = new BufferedImage(sourceImage.getWidth(), sourceImage.getHeight(), targetType);
+            image.getGraphics().drawImage(sourceImage, 0, 0, null);
+        }
+        return image;
+    }
 }

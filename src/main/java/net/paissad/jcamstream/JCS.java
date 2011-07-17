@@ -69,7 +69,7 @@ public class JCS {
         logger.trace("a trace message ...");
         logger.error("error stuff ...");
         logger.warn("Don't bother for this warning !");
-        logger.info("ok");
+        logger.debug("ok");
     }
 
     // _________________________________________________________________________
